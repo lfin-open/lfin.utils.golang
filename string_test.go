@@ -2,12 +2,12 @@ package utils
 
 import (
 	"fmt"
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestIsEmptyString(t *testing.T) {
-
 	var src string // src = ""
 	assert.Equal(t, true, IsEmptyString(src), fmt.Sprintf("[%s] -> Empty", src))
 
