@@ -12,12 +12,15 @@
 package utils
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
-var file = "./README.md"
-var tmpDir = "./_THIS_IS_TEMP_DIR_"
+var (
+	file   = "./README.md"
+	tmpDir = "./_THIS_IS_TEMP_DIR_"
+)
 
 func TestCheckFileExist(t *testing.T) {
 	assert.Equal(t, true, CheckFileExist(file))
@@ -28,7 +31,6 @@ func TestCheckNotExist(t *testing.T) {
 }
 
 func TestMakeDirIfNotExist(t *testing.T) {
-
 	t.Log("-- make directory --")
 	t.Logf("(before-c) dir %s Exist?:%v", tmpDir, CheckFileExist(tmpDir))
 	t.Logf("(before-c) make directory if not exist")
@@ -41,5 +43,4 @@ func TestMakeDirIfNotExist(t *testing.T) {
 	_ = RemoveDirIfExist(tmpDir)
 	t.Logf("(after -r) dir %s Exist?:%v", tmpDir, CheckFileExist(tmpDir))
 	assert.Equal(t, true, CheckFileNotExist(tmpDir))
-
 }
