@@ -41,7 +41,8 @@ func GetSize(f multipart.File) (int, error) {
 	return len(content), err
 }
 
-// GetExt get the file ext
+// GetExt get the file ext, include dot(.)
+// abc.txt --> .txt
 func GetExt(fileName string) string {
 	return path.Ext(fileName)
 }
@@ -83,8 +84,17 @@ func RemoveDirIfExist(src string) error {
 	return e
 }
 
-// OpenFile open a file according to a specific mode
-func OpenFile(name string, flag int, perm os.FileMode) (*os.File, error) {
+// GetCurrentWorkDirectory get current working directory
+func GetWorkDirectory() string {
+	d, err := os.Getwd()
+	if err != nil {
+		fmt.Println(err)
+	}
+	return d
+}
+
+// Open a file according to a specific mode
+func Open(name string, flag int, perm os.FileMode) (*os.File, error) {
 	f, err := os.OpenFile(name, flag, perm)
 	if err != nil {
 		return nil, err
@@ -93,11 +103,29 @@ func OpenFile(name string, flag int, perm os.FileMode) (*os.File, error) {
 	return f, nil
 }
 
-// GetCurrentWorkDirectory get current working directory
-func GetWorkDirectory() string {
-	d, err := os.Getwd()
+// MustOpen maximize trying to open the file
+func MustOpen(fileName, path string) (*os.File, error) {
+	dir, err := os.Getwd()
 	if err != nil {
-		fmt.Println(err)
+		return nil, fmt.Errorf("os.Getwd err: %v", err)
 	}
-	return d
+
+	fullDir := dir + "/" + path
+	perm := CheckPermission(fullDir)
+	if perm {
+		return nil, fmt.Errorf("file.CheckPermission Permission denied src: %s", fullDir)
+	}
+
+	err = MakeDirIfNotExist(fullDir)
+	if err != nil {
+		return nil, fmt.Errorf("file.IsNotExistMkDir src: %s, err: %v", fullDir, err)
+	}
+
+	fullPath := fullDir + "/" + fileName
+	f, err := Open(fullPath, os.O_APPEND|os.O_CREATE|os.O_RDWR, 0644)
+	if err != nil {
+		return nil, fmt.Errorf("fail to OpenFile :%v", err)
+	}
+
+	return f, nil
 }
