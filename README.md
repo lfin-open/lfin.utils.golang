@@ -1,2 +1,2 @@
-# utils-golang
+# lfin.utils.golang
 utilities for GoLang
