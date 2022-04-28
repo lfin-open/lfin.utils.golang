@@ -63,7 +63,6 @@ func TestMustOpen(t *testing.T) {
 	t.Logf("remove directory %s", tmpDir)
 	_ = RemoveDirIfExist(tmpDir)
 	assert.Equal(t, true, CheckFileNotExist(tmpDir))
-
 }
 
 // test get file extension
