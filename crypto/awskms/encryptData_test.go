@@ -33,9 +33,9 @@ func init() {
 	}
 }
 
-func (KMSEncryptImpl) Encrypt(ctx context.Context,
-	params *kms.EncryptInput,
-	optFns ...func(*kms.Options)) (*kms.EncryptOutput, error) {
+func (KMSEncryptImpl) Encrypt(_ context.Context,
+	_ *kms.EncryptInput,
+	_ ...func(*kms.Options)) (*kms.EncryptOutput, error) {
 
 	blob := []byte(globalConfig.Text)
 

@@ -29,9 +29,9 @@ var (
 
 type KMSDecryptImpl struct{}
 
-func (KMSDecryptImpl) Decrypt(ctx context.Context,
-	params *kms.DecryptInput,
-	optFns ...func(*kms.Options)) (*kms.DecryptOutput, error) {
+func (KMSDecryptImpl) Decrypt(_ context.Context,
+	_ *kms.DecryptInput,
+	_ ...func(*kms.Options)) (*kms.DecryptOutput, error) {
 
 	// Blah, blah, blah
 	//plainText := []byte{66, 108, 97, 104, 44, 32, 98, 108, 97, 104, 44, 32, 98, 108, 97, 104}
