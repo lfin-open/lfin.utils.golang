@@ -1,8 +1,9 @@
 package hash
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestHashAES512(t *testing.T) {
@@ -22,5 +23,4 @@ func TestHashAES512(t *testing.T) {
 	t.Logf("generated aes512 hash=[%s]\n", sh2)
 
 	assert.Equal(t, expt2, sh2)
-
 }

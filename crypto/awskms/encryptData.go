@@ -8,8 +8,9 @@ import (
 	b64 "encoding/base64"
 	"errors"
 	"fmt"
-	lstrings "github.com/lfin-open/lfin.utils.golang/strings"
 	"strings"
+
+	lstrings "github.com/lfin-open/lfin.utils.golang/strings"
 
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/kms"
@@ -43,7 +44,6 @@ func EncryptDataByKms(c context.Context, api KMSEncryptAPI, input *kms.EncryptIn
 //     If success, an EncryptOutput object containing the result of the service call and "".
 //     Otherwise, nil and an error from the call to Encrypt.
 func EncryptData(keyID, s string) (string, error) {
-
 	if lstrings.IsEmptyString(keyID) {
 		return "", errors.New("aws kms keyID is nil or empty")
 	}

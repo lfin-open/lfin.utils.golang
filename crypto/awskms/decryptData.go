@@ -7,6 +7,7 @@ import (
 	"context"
 	b64 "encoding/base64"
 	"fmt"
+
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/kms"
 	"github.com/lfin-open/lfin.utils.golang/strings"
@@ -39,7 +40,6 @@ func DecryptDataByKms(c context.Context, api KMSDecryptAPI, input *kms.DecryptIn
 //     If success, a DecryptOutput object containing the result of the service call and "".
 //     Otherwise, "" and an error from the call to Decrypt.
 func DecryptData(e string) (string, error) {
-
 	if strings.IsEmptyString(e) {
 		return "", nil
 	}
