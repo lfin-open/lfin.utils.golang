@@ -7,8 +7,9 @@ import (
 	"encoding/base64"
 	"errors"
 	"fmt"
-	"github.com/lfin-open/lfin.utils.golang/crypto/random"
 	"strings"
+
+	"github.com/lfin-open/lfin.utils.golang/crypto/random"
 )
 
 // GenerateKey AES-256 키생성
@@ -71,7 +72,6 @@ func (c AesCipher) DecryptToString(encryptedBase64 string) (string, error) {
 
 // DecryptToByte  AES-256 복호화후 byte 로 리턴
 func (c AesCipher) DecryptToByte(encryptedBase64 string) (result []byte, err error) {
-
 	if strings.TrimSpace(encryptedBase64) == "" {
 		return nil, nil
 	}

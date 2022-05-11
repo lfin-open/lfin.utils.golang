@@ -1,12 +1,12 @@
 package mask
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestGenMasking(t *testing.T) {
-
 	src := ""
 	exp := ""
 	result := GenMasking(src, "*", 2, 3)
@@ -42,5 +42,4 @@ func TestGenMasking(t *testing.T) {
 	result = GenMasking(src, "*", 20, 1000)
 	t.Logf("GenMasking \nsrc     :%s \nexpected:%s \nresult  :%s", src, exp, result)
 	assert.Equal(t, exp, result)
-
 }

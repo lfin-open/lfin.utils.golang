@@ -3,9 +3,10 @@ package aes
 import (
 	"encoding/hex"
 	"fmt"
+	"testing"
+
 	"github.com/lfin-open/lfin.utils.golang/encoding"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 // AES Encryption and Decryption Online Tool(Calculator)
@@ -15,9 +16,9 @@ import (
 // https://www.allkeysgenerator.com/Random/Security-Encryption-Key-Generator.aspx
 
 var (
-	//iv     = "hVkYp3s6v9y$B&E)"
+	// iv     = "hVkYp3s6v9y$B&E)"
 	ivHex = "68566b59703373367639792442264529"
-	//key    = "D(G+KbPeShVmYp3s6v9y$B&E)H@McQfT"
+	// key    = "D(G+KbPeShVmYp3s6v9y$B&E)H@McQfT"
 	keyHex = "4428472b4b6250655368566d5970337336763979244226452948404d63516654"
 	plain  = "This is Plain Text 이것은 평문이예요. !@#$%^&*() 1234567890-="
 	encB64 = "qyHAnaQL3U1BlrZiJIXBDRJYibMoHlYd28KDR6U9vEbruvcNlDQpSfMzMOw+wXsJnu/fInvWUqAE8exKcpp+noH9+VZIDtEg57fJOjVnSsg="
@@ -45,7 +46,6 @@ func TestGenerateKey(t *testing.T) {
 	fmt.Printf(" - keyBase64     =[%s]\n", encoding.Base64EncodingFromByte(keyB32))
 
 	assert.Equal(t, size32, len(keyB32))
-
 }
 
 func TestAesCipher_Encrypt(t *testing.T) {
@@ -62,7 +62,6 @@ func TestAesCipher_Encrypt(t *testing.T) {
 	fmt.Printf("  - encrypted base64=[%s]\n", encB64Result)
 
 	assert.Equal(t, encB64, encB64Result)
-
 }
 
 func TestAesCipher_Decrypt(t *testing.T) {
@@ -95,5 +94,4 @@ func TestAesCipher_DecryptToString(t *testing.T) {
 	fmt.Printf("  - decrypted  plain=[%s]\n", plainResult)
 
 	assert.Equal(t, plain, plainResult)
-
 }

@@ -4,9 +4,10 @@ import (
 	"crypto/aes"
 	"encoding/hex"
 	"fmt"
+	"testing"
+
 	"github.com/lfin-open/lfin.utils.golang/encoding"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 func TestGenerateRandomBytes(t *testing.T) {

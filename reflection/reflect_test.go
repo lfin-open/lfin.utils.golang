@@ -1,8 +1,9 @@
 package reflection
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 type User struct {
@@ -50,7 +51,6 @@ func TestSetObjFieldToInt64(t *testing.T) {
 	// 필드가 없으면
 	exist = SetObjFieldToInt64(&user2, "NoField", age)
 	assert.Equal(t, false, exist)
-
 }
 
 func TestSetObjFieldToString(t *testing.T) {

@@ -1,8 +1,9 @@
 package password
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 // Online Bcrypt Hash Generator & Checker
@@ -10,7 +11,7 @@ import (
 
 var (
 	password = "ThisIsPlassword &*^%$^"
-	//cost           = 10
+	// cost           = 10
 	hashedPassword = "$2a$10$Ye1Whun2EiJR1tIC65VGBO4FWnTchdgEY13u5RN.mECGzz3SSbIsK"
 )
 
