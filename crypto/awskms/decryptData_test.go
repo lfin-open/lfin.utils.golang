@@ -2,9 +2,10 @@ package awskms
 
 import (
 	"context"
+	"testing"
+
 	"github.com/aws/aws-sdk-go-v2/service/kms"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 //var (
@@ -31,10 +32,10 @@ type KMSDecryptImpl struct{}
 
 func (KMSDecryptImpl) Decrypt(_ context.Context,
 	_ *kms.DecryptInput,
-	_ ...func(*kms.Options)) (*kms.DecryptOutput, error) {
-
+	_ ...func(*kms.Options)) (*kms.DecryptOutput, error,
+) {
 	// Blah, blah, blah
-	//plainText := []byte{66, 108, 97, 104, 44, 32, 98, 108, 97, 104, 44, 32, 98, 108, 97, 104}
+	// plainText := []byte{66, 108, 97, 104, 44, 32, 98, 108, 97, 104, 44, 32, 98, 108, 97, 104}
 	plainText := []byte("이것은 Dummuy 에서 복호화한 값. I am dummy")
 
 	output := &kms.DecryptOutput{
@@ -45,7 +46,6 @@ func (KMSDecryptImpl) Decrypt(_ context.Context,
 }
 
 func TestDecryptDataByKms(t *testing.T) {
-
 	// 실 KMS 를 타지 않고 위에 정의한 dummy Decrypt 를 사용함.
 	api := &KMSDecryptImpl{}
 	blob := []byte(encData)
@@ -63,7 +63,6 @@ func TestDecryptDataByKms(t *testing.T) {
 }
 
 func TestDecryptData(t *testing.T) {
-
 	t.Logf("encrypted data:[%s]", encData)
 	result, err := DecryptData(encData)
 
