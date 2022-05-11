@@ -9,7 +9,7 @@
  *
  */
 
-package utils
+package file
 
 import (
 	"testing"
@@ -18,7 +18,7 @@ import (
 )
 
 var (
-	file    = "./README.md"
+	file    = "../README.md"
 	tmpDir  = "_THIS_IS_TEMP_DIR_"
 	tmpFile = "tmp_file.txt"
 )

@@ -9,9 +9,10 @@
  *
  */
 
-package utils
+package date
 
 import (
+	"github.com/lfin-open/lfin.utils.golang/strings"
 	"testing"
 	"time"
 
@@ -45,17 +46,17 @@ func TestGetCurrDateTimeYMD24HMMSSNoDiv(t *testing.T) {
 func TestGetCurrentUnixTimestampSec(t *testing.T) {
 	i := GetCurrentUnixTimestampSec()
 	t.Logf("GetCurrentUnixTimestampSec->[%d]", i)
-	assert.Equal(t, 10, len(I64ToS(i)))
+	assert.Equal(t, 10, len(strings.I64ToS(i)))
 }
 
 func TestGetCurrentUnixTimestampMill(t *testing.T) {
 	i := GetCurrentUnixTimestampMill()
 	t.Logf("GetCurrentUnixTimestampMill->[%d]", i)
-	assert.Equal(t, 13, len(I64ToS(i)))
+	assert.Equal(t, 13, len(strings.I64ToS(i)))
 }
 
 func TestGetCurrentUnixTimestampNano(t *testing.T) {
 	i := GetCurrentUnixTimestampNano()
 	t.Logf("GetCurrentUnixTimestampNano->[%d]", i)
-	assert.Equal(t, 19, len(I64ToS(i)))
+	assert.Equal(t, 19, len(strings.I64ToS(i)))
 }

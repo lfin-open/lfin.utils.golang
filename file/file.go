@@ -9,7 +9,7 @@
  *
  */
 
-package utils
+package file
 
 import (
 	"fmt"

@@ -9,7 +9,7 @@
  *
  */
 
-package utils
+package strings
 
 import (
 	"fmt"
