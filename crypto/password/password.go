@@ -7,7 +7,6 @@ import (
 
 // HashBcryptPassword bcrypt 로 패스워드 해싱, empty("") 이면 empty("") 리턴
 func HashBcryptPassword(password string, cost int) (string, error) {
-
 	if strings.IsEmptyString(password) {
 		return "", nil
 	}

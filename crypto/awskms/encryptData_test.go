@@ -5,10 +5,11 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/aws/aws-sdk-go-v2/service/kms"
 	"io/ioutil"
 	"log"
 	"testing"
+
+	"github.com/aws/aws-sdk-go-v2/service/kms"
 )
 
 type KMSEncryptImpl struct{}
@@ -35,8 +36,8 @@ func init() {
 
 func (KMSEncryptImpl) Encrypt(ctx context.Context,
 	params *kms.EncryptInput,
-	optFns ...func(*kms.Options)) (*kms.EncryptOutput, error) {
-
+	optFns ...func(*kms.Options)) (*kms.EncryptOutput, error,
+) {
 	blob := []byte(globalConfig.Text)
 
 	output := &kms.EncryptOutput{
@@ -68,7 +69,6 @@ func populateConfiguration() error {
 }
 
 func TestEncryptTextByKms(t *testing.T) {
-
 	t.Logf("KeyId:[%s]", globalConfig.KeyID)
 	t.Logf("Text:[%s]", globalConfig.Text)
 
