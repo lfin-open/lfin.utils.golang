@@ -1,0 +1,27 @@
+name: Go
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: 1.18
+
+    - name: Test
+      run: |
+        go test -coverprofile=cover.out ./...
+        curl https://deepsource.io/cli | sh 
+        ENV DEEPSOURCE_DSN=https://333f2cfad267446796f19387eb6b10f1@deepsource.io 
+        ./bin/deepsource report --analyzer test-coverage --key go --value-file ./cover.out
+    
