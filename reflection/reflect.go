@@ -11,7 +11,6 @@ import "reflect"
 //  - string: 필드가 있는경우 string value
 //  - bool: 필드존재여부 true: 필드있음, false:필드없음
 func GetObjFieldToString(obj interface{}, key string) (string, bool) {
-
 	r := reflect.ValueOf(obj)
 	v := reflect.Indirect(r).FieldByName(key)
 
@@ -31,7 +30,6 @@ func GetObjFieldToString(obj interface{}, key string) (string, bool) {
 //  - int64: 필드가 있는경우 int64 value
 //  - bool: 필드존재여부 true: 필드있음, false:필드없음
 func GetObjFieldToInt64(obj interface{}, key string) (int64, bool) {
-
 	r := reflect.ValueOf(obj)
 	v := reflect.Indirect(r).FieldByName(key)
 
@@ -51,7 +49,6 @@ func GetObjFieldToInt64(obj interface{}, key string) (int64, bool) {
 // Return:
 //  - bool: 필드존재여부 true: 필드있음, false:필드없음
 func SetObjFieldToString(obj interface{}, key, value string) bool {
-
 	r := reflect.ValueOf(obj)
 	v := reflect.Indirect(r).FieldByName(key)
 
@@ -61,7 +58,6 @@ func SetObjFieldToString(obj interface{}, key, value string) bool {
 	} else {
 		return false
 	}
-
 }
 
 // SetObjFieldToInt64 object(interface{}) 의 int64 값을 저장
@@ -73,7 +69,6 @@ func SetObjFieldToString(obj interface{}, key, value string) bool {
 // Return:
 //  - bool: 필드존재여부 true: 필드있음, false:필드없음
 func SetObjFieldToInt64(obj interface{}, key string, value int64) bool {
-
 	r := reflect.ValueOf(obj)
 	v := reflect.Indirect(r).FieldByName(key)
 
@@ -83,5 +78,4 @@ func SetObjFieldToInt64(obj interface{}, key string, value int64) bool {
 	} else {
 		return false
 	}
-
 }

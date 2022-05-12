@@ -3,6 +3,7 @@ package random
 import (
 	"crypto/rand"
 	"encoding/hex"
+
 	"github.com/lfin-open/lfin.utils.golang/encoding"
 )
 
