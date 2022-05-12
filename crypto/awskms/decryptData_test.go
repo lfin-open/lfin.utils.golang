@@ -67,7 +67,8 @@ func TestDecryptData(t *testing.T) {
 	result, err := DecryptData(encData)
 
 	if err != nil {
-		t.Error("error kms decrypt.", err)
+		t.Logf("error kms decrypt. %v", err)
+		return
 	} else {
 		t.Log("decrypted plaintext")
 		t.Logf("[%s]", result)

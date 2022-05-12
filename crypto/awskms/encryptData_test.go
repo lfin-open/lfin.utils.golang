@@ -79,7 +79,7 @@ func TestEncryptTextByKms(t *testing.T) {
 	}
 	result, err := EncryptDataByKms(context.Background(), api, input)
 	if err != nil {
-		t.Error("error kms encrypt.", err)
+		t.Logf("error kms encrypt. %v", err)
 		t.Logf("please check, posibbly increct KeyId:[%s]", globalConfig.KeyID)
 	} else {
 		t.Log("encrypted Blob (base64 byte array):")
@@ -87,19 +87,19 @@ func TestEncryptTextByKms(t *testing.T) {
 	}
 }
 
-//func TestEncryptText(t *testing.T) {
-//
-//	result, err := EncryptData(globalConfig.KeyID, globalConfig.Text)
-//
-//	t.Logf("KeyId:[%s]", globalConfig.KeyID)
-//	t.Logf("Text:[%s]", globalConfig.Text)
-//
-//	if err != nil {
-//		t.Error("error kms encrypt.", err)
-//		t.Logf("please check, posibbly increct KeyId:[%s]", globalConfig.KeyID)
-//	} else {
-//		t.Log("encrypted data (base64)")
-//		t.Log(result)
-//	}
-//
-//}
+func TestEncryptText(t *testing.T) {
+
+	result, err := EncryptData(globalConfig.KeyID, globalConfig.Text)
+
+	t.Logf("KeyId:[%s]", globalConfig.KeyID)
+	t.Logf("Text:[%s]", globalConfig.Text)
+
+	if err != nil {
+		t.Logf("error kms encrypt. %v", err)
+		t.Logf("please check, posibbly increct KeyId:[%s]", globalConfig.KeyID)
+	} else {
+		t.Log("encrypted data (base64)")
+		t.Log(result)
+	}
+
+}
