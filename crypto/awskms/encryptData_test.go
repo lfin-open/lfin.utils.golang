@@ -88,7 +88,6 @@ func TestEncryptTextByKms(t *testing.T) {
 }
 
 func TestEncryptText(t *testing.T) {
-
 	result, err := EncryptData(globalConfig.KeyID, globalConfig.Text)
 
 	t.Logf("KeyId:[%s]", globalConfig.KeyID)
@@ -101,5 +100,4 @@ func TestEncryptText(t *testing.T) {
 		t.Log("encrypted data (base64)")
 		t.Log(result)
 	}
-
 }
