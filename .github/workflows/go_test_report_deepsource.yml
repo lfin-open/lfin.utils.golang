@@ -22,6 +22,6 @@ jobs:
       run: |
         go test -coverprofile=cover.out ./...
         curl https://deepsource.io/cli | sh 
-        ENV DEEPSOURCE_DSN=https://333f2cfad267446796f19387eb6b10f1@deepsource.io 
+        export DEEPSOURCE_DSN=https://333f2cfad267446796f19387eb6b10f1@deepsource.io 
         ./bin/deepsource report --analyzer test-coverage --key go --value-file ./cover.out
     
