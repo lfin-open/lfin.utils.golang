@@ -13,6 +13,18 @@ func TestGenMasking(t *testing.T) {
 	t.Logf("GenMasking src:%s expected:%s result:%s", src, exp, result)
 	assert.Equal(t, exp, result)
 
+	src = "012"
+	exp = "012"
+	result = GenMasking(src, "*", 4, 2)
+	t.Logf("GenMasking src:%s expected:%s result:%s", src, exp, result)
+	assert.Equal(t, exp, result)
+
+	src = "012"
+	exp = "012"
+	result = GenMasking(src, "*", 1, 0)
+	t.Logf("GenMasking src:%s expected:%s result:%s", src, exp, result)
+	assert.Equal(t, exp, result)
+
 	src = "01234567890"
 	exp = "01*****7890"
 	result = GenMasking(src, "*", 2, 5)
