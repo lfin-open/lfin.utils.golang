@@ -46,5 +46,4 @@ func TestIsValidCoordinates(t *testing.T) {
 	lon = -180.000001
 	ok = IsValidCoordinates(lat, lon)
 	assert.Equal(t, false, ok)
-
 }
