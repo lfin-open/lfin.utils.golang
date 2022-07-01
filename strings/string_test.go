@@ -29,11 +29,6 @@ func TestIsEmptyString(t *testing.T) {
 	assert.Equal(t, true, IsEmptyString(src), fmt.Sprintf("[%s] -> Empty", src))
 }
 
-func TestGetHostname(t *testing.T) {
-	h := GetHostname()
-	t.Logf("Hostname:%s", h)
-}
-
 func TestI64ToS(t *testing.T) {
 	var i int64 = 1651027224746
 	s := I64ToS(i)

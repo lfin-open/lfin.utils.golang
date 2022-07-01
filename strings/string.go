@@ -13,19 +13,8 @@ package strings
 
 import (
 	"fmt"
-	"os"
 	"strings"
 )
-
-// GetHostname 시스템의 호스트이름을 리턴
-func GetHostname() string {
-	// get hostname
-	hostname, err := os.Hostname()
-	if err != nil {
-		hostname = ""
-	}
-	return hostname
-}
 
 // IsEmptyString string 이 empty 인지 체크
 func IsEmptyString(s string) bool {
