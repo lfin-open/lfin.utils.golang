@@ -39,7 +39,6 @@ func IsValidCoordinates(lat, lon float64) bool {
 // Longitude: 3733.6734 N -> 37.561223
 // Latitude : 12649.7108 E -> 126.828513
 func ConvertDDMtoDD(v, dir string) (string, error) {
-
 	result, err := strconv.ParseFloat(v, 64)
 	if err != nil {
 		return "0", err
