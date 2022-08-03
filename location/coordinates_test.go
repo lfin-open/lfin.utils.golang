@@ -57,6 +57,7 @@ func TestIsValidCoordinates(t *testing.T) {
 
 func TestParseDDMtoDD(t *testing.T) {
 
+	// ---------------------
 	// general case
 	// North, West
 	lonDdExp := "37.561223"
@@ -94,10 +95,19 @@ func TestParseDDMtoDD(t *testing.T) {
 	assert.Equal(t, lonDdExp, lonDd)
 	assert.Equal(t, latDdExp, latDd)
 
+	// ---------------------
 	// float parse error
 	lon = ""
 	lonDd, err := ConvertDDMtoDD(lon, lonDir)
 	assert.Equal(t, "0", lonDd)
-	fmt.Printf("error: [%s]\n", err)
+	fmt.Printf("   e: [%s]\n", err)
+
+	// ---------------------
+	// invalid direction
+	lon = "4238.0481"
+	lonDir = "South"
+	lonDd, err = ConvertDDMtoDD(lon, lonDir)
+	assert.Equal(t, "0", lonDd)
+	fmt.Printf("   e: [%s]\n", err)
 
 }
