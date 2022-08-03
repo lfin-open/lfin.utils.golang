@@ -9,7 +9,7 @@ utilities for GoLang
 - date: date convert 
 - encoding: base64 encoding 
 - file: check exist, open, create
-- location: validate coordinates
+- location: validate, convert(DDM ->DM) coordinates
 - masking: masking 
 - net: hostname
 - paging: calculate paging 
