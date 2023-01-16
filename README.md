@@ -15,3 +15,4 @@ utilities for GoLang
 - paging: calculate paging 
 - reflection: 
 - strings: check empty, int to string convert ...
+- uuid: generate uuid (36byte)
