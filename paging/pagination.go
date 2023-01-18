@@ -7,10 +7,11 @@ import (
 var DefaultSize = 20
 
 type Pagination struct {
-	Offset      int `json:"offset"`
-	CurrentPage int `json:"currentPage"`
-	TotalPages  int `json:"totalPages"`
-	Size        int `json:"size"`
+	Offset      int   `json:"offset"`
+	CurrentPage int   `json:"currentPage"`
+	TotalPages  int   `json:"totalPages"`
+	Size        int   `json:"size"`
+	Total       int64 `json:"total"`
 }
 
 // Calc 페이지 계산하기
@@ -27,6 +28,7 @@ func Calc(pageNo, size int, total int64) Pagination {
 	p.Offset = size * (pageNo - 1)
 	p.CurrentPage = pageNo
 	p.Size = size
+	p.Total = total
 
 	// calc total page
 	d := float64(total) / float64(size)
