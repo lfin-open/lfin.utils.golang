@@ -4,33 +4,33 @@ import (
 	"math"
 )
 
-type Pagination struct {
-	Offset      int
-	CurrentPage int
-	MaxPage     int
-	Size        int
-}
-
 var DefaultSize = 20
 
+type Pagination struct {
+	Offset      int `json:"offset"`
+	CurrentPage int `json:"currentPage"`
+	TotalPages  int `json:"totalPages"`
+	Size        int `json:"size"`
+}
+
 // Calc 페이지 계산하기
-func Calc(page, size int, total int64) Pagination {
+func Calc(pageNo, size int, total int64) Pagination {
 	p := Pagination{}
 
-	if page <= 0 {
-		page = 1
+	if pageNo <= 0 {
+		pageNo = 1
 	}
 	if size <= 0 {
 		size = DefaultSize
 	}
 
-	p.Offset = size * (page - 1)
-	p.CurrentPage = page
+	p.Offset = size * (pageNo - 1)
+	p.CurrentPage = pageNo
 	p.Size = size
 
-	// calc maxpage
+	// calc total page
 	d := float64(total) / float64(size)
-	p.MaxPage = int(math.Ceil(d))
+	p.TotalPages = int(math.Ceil(d))
 
 	return p
 }
