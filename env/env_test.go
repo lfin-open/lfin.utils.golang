@@ -1,13 +1,12 @@
 package env
 
 import (
-	"github.com/stretchr/testify/assert"
 	"os"
 	"reflect"
 	"testing"
-)
 
-var ()
+	"github.com/stretchr/testify/assert"
+)
 
 type args struct {
 	key      string
@@ -31,7 +30,6 @@ func TestSetEnv(t *testing.T) {
 			assert.Equal(t, arg.expected, value)
 		}
 	}
-
 }
 
 func TestGetEnv(t *testing.T) {
@@ -51,7 +49,6 @@ func TestGetEnv(t *testing.T) {
 	// default value if not found
 	v := GetEnv("NOT_FOUND_S", "DEFAULT")
 	assert.Equal(t, "DEFAULT", v)
-
 }
 
 func TestGetEnvInt(t *testing.T) {
@@ -97,7 +94,6 @@ func TestGetEnvInt64(t *testing.T) {
 }
 
 func TestGetEnvBool(t *testing.T) {
-
 	args := []args{
 		{"TEST_B_01_true", "true", false, true},
 		{"TEST_B_02_True", "True", false, true},
@@ -124,5 +120,4 @@ func TestGetEnvBool(t *testing.T) {
 
 	vt := GetEnvBool("NOT_FOUND_BT", true)
 	assert.Equal(t, true, vt)
-
 }
