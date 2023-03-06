@@ -13,6 +13,12 @@ func TestCalc(t *testing.T) {
 	page2 := Pagination{Size: 10, CurrentPage: 7, TotalPages: 11, Offset: 60, Total: 105}
 	assert.Equal(t, page2, Calc(7, 10, 105))
 
+	page3 := Pagination{Size: 20, CurrentPage: 1, TotalPages: 1, Offset: 0, Total: 5}
+	assert.Equal(t, page3, Calc(1, 0, 5))
+
+	page4 := Pagination{Size: 10, CurrentPage: 1, TotalPages: 5, Offset: 0, Total: 45}
+	assert.Equal(t, page4, Calc(-1, 10, 45))
+
 	page0 := Pagination{Size: 10, CurrentPage: 1, TotalPages: 1, Offset: 0, Total: 5}
 	assert.Equal(t, page0, Calc(1, 10, 5))
 }

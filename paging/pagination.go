@@ -37,8 +37,8 @@ func Calc(pageNo, size int, total int64) Pagination {
 	return p
 }
 
-//// CalcPaginationFromRequest request 에서 page, pageSize 가져오기
-//func CalcPaginationFromRequest(c *gin.Context) Pagination {
+// // CalcPaginationFromRequest request 에서 page, pageSize 가져오기
+// func CalcPaginationFromRequest(c *gin.Context) Pagination {
 //	p := Pagination{}
 //
 //	page := c.DefaultQuery("page", "1")
@@ -48,4 +48,4 @@ func Calc(pageNo, size int, total int64) Pagination {
 //	p.Size, _ = strconv.Atoi(pageSize)
 //
 //	return p
-//}
+// }
