@@ -21,5 +21,4 @@ func TestCalc(t *testing.T) {
 
 	page0 := Pagination{Size: 10, CurrentPage: 1, TotalPages: 1, Offset: 0, Total: 5}
 	assert.Equal(t, page0, Calc(1, 10, 5))
-
 }
