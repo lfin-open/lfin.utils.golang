@@ -16,3 +16,4 @@ utilities for GoLang
 - reflection: 
 - strings: check empty, int to string convert ...
 - uuid: generate uuid (36byte)
+- env: set, get environment variable
