@@ -48,6 +48,7 @@ func TestToSnakeCase(t *testing.T) {
 		{"TestToSnakeCase_2", args{"testtosnakeCase"}, "testtosnake_case"},
 		{"TestToSnakeCase_3", args{"testtosnakecase"}, "testtosnakecase"},
 		{"TestToSnakeCase_4", args{"Test To Snake Case"}, "test_to_snake_case"},
+		{"TestToSnakeCase_5", args{" "}, ""},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

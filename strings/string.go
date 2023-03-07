@@ -35,6 +35,9 @@ func I64ToS(i64 int64) string {
 // ex) TestToSnakeCase -> test_to_snake_case
 func ToSnakeCase(str string) string {
 	str = strings.ReplaceAll(str, " ", "")
+	if len(str) < 1 {
+		return ""
+	}
 	var matchFirstCap = regexp.MustCompile("(.)([A-Z][a-z]+)")
 	var matchAllCap = regexp.MustCompile("([a-z0-9])([A-Z])")
 
