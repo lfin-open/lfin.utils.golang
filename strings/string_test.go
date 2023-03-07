@@ -34,3 +34,24 @@ func TestI64ToS(t *testing.T) {
 	s := I64ToS(i)
 	t.Logf("int64:%d --> string:%s", i, s)
 }
+
+func TestToSnakeCase(t *testing.T) {
+	type args struct {
+		str string
+	}
+	tests := []struct {
+		name string
+		args args
+		want string
+	}{
+		{"TestToSnakeCase_1", args{"TestToSnakeCase"}, "test_to_snake_case"},
+		{"TestToSnakeCase_2", args{"testtosnakeCase"}, "testtosnake_case"},
+		{"TestToSnakeCase_3", args{"testtosnakecase"}, "testtosnakecase"},
+		{"TestToSnakeCase_4", args{"Test To Snake Case"}, "test_to_snake_case"},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			assert.Equalf(t, tt.want, ToSnakeCase(tt.args.str), "ToSnakeCase(%v)", tt.args.str)
+		})
+	}
+}
