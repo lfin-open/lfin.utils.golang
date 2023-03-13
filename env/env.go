@@ -63,6 +63,42 @@ func GetEnvInt64(key string, def int64) (int64, bool) {
 	return def, false
 }
 
+// GetEnvUInt 환경변수 가져오기
+// key: 환경변수명
+// def: 기본값
+// return:
+//
+//	uint: 환경변수값, 키가 없으면 def 값
+//	bool: 키가 있으면 true, 없거나 uint 로 변환할 수 없으면 false
+func GetEnvUInt(key string, def uint) (uint, bool) {
+	if value, ok := os.LookupEnv(key); ok {
+		iv, err := strconv.ParseUint(value, 10, 32)
+		if err != nil {
+			return def, false
+		}
+		return uint(iv), ok
+	}
+	return def, false
+}
+
+// GetEnvUInt64 환경변수 가져오기
+// key: 환경변수명
+// def: 기본값
+// return:
+//
+//	uint64: 환경변수값, 키가 없으면 def 값
+//	bool: 키가 있으면 true, 없거나 uint64 로 변환할 수 없으면 false
+func GetEnvUInt64(key string, def uint64) (uint64, bool) {
+	if value, ok := os.LookupEnv(key); ok {
+		iv, err := strconv.ParseUint(value, 10, 64)
+		if err != nil {
+			return def, false
+		}
+		return iv, ok
+	}
+	return def, false
+}
+
 // GetEnvFloat32 환경변수 가져오기
 // key: 환경변수명
 // def: 기본값

@@ -85,15 +85,65 @@ func TestGetEnvInt(t *testing.T) {
 
 func TestGetEnvInt64(t *testing.T) {
 	args := []args{
-		{"TEST_I_1", "123456", int64(654321), int64(123456), true},
-		{"TEST_I_2", "-91", int64(-19), int64(-91), true},
-		{"TEST_I_3", "1911A", int64(1191), int64(1191), false},
-		{"TEST_I_4", "2 9 3", int64(392), int64(392), false},
+		{"TEST_I64_1", "123456", int64(654321), int64(123456), true},
+		{"TEST_I64_2", "-91", int64(-19), int64(-91), true},
+		{"TEST_I64_3", "1911A", int64(1191), int64(1191), false},
+		{"TEST_I64_4", "2 9 3", int64(392), int64(392), false},
 	}
 
 	for _, arg := range args {
 		SetEnv(arg.key, arg.value)
 		value, exist := GetEnvInt64(arg.key, reflect.ValueOf(arg.def).Int())
+		if !assert.Equal(t, arg.exist, exist) {
+			t.Errorf("key:%s, value:%s, expected:%v, actual:%v", arg.key, arg.value, arg.exist, exist)
+		}
+		if !assert.Equal(t, arg.expected, value) {
+			t.Errorf("key:%s, value:%s, expected:%v, actual:%v", arg.key, arg.value, arg.expected, value)
+		}
+	}
+
+	// default value if not found
+	v, exist := GetEnvInt64("NOT_FOUND_I", int64(99))
+	assert.Equal(t, false, exist)
+	assert.Equal(t, int64(99), v)
+}
+
+func TestGetEnvUInt(t *testing.T) {
+	args := []args{
+		{"TEST_UI_1", "123456", uint(654321), uint(123456), true},
+		{"TEST_UI_2", "-91", uint(19), uint(19), false},
+		{"TEST_UI_3", "1911A", uint(1191), uint(1191), false},
+		{"TEST_UI_4", "2 9 3", uint(392), uint(392), false},
+	}
+
+	for _, arg := range args {
+		SetEnv(arg.key, arg.value)
+		value, exist := GetEnvUInt(arg.key, uint(reflect.ValueOf(arg.def).Uint()))
+		if !assert.Equal(t, arg.exist, exist) {
+			t.Errorf("key:%s, value:%s, expected:%v, actual:%v", arg.key, arg.value, arg.exist, exist)
+		}
+		if !assert.Equal(t, arg.expected, value) {
+			t.Errorf("key:%s, value:%s, expected:%v, actual:%v", arg.key, arg.value, arg.expected, value)
+		}
+	}
+
+	// default value if not found
+	v, exist := GetEnvInt("NOT_FOUND_I", 99)
+	assert.Equal(t, false, exist)
+	assert.Equal(t, 99, v)
+}
+
+func TestGetEnvUInt64(t *testing.T) {
+	args := []args{
+		{"TEST_UI64_1", "123456", uint64(654321), uint64(123456), true},
+		{"TEST_UI64_2", "-91", uint64(19), uint64(19), false},
+		{"TEST_UI64_3", "1911A", uint64(1191), uint64(1191), false},
+		{"TEST_UI64_4", "2 9 3", uint64(392), uint64(392), false},
+	}
+
+	for _, arg := range args {
+		SetEnv(arg.key, arg.value)
+		value, exist := GetEnvUInt64(arg.key, reflect.ValueOf(arg.def).Uint())
 		if !assert.Equal(t, arg.exist, exist) {
 			t.Errorf("key:%s, value:%s, expected:%v, actual:%v", arg.key, arg.value, arg.exist, exist)
 		}
