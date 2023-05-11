@@ -48,7 +48,7 @@ func TestGenerateKey(t *testing.T) {
 	assert.Equal(t, size32, len(keyB32))
 }
 
-func TestAesCipher_Encrypt(t *testing.T) {
+func TestAesCipherEncrypt(t *testing.T) {
 	ivB, _ := hex.DecodeString(ivHex)
 	keyB, _ := hex.DecodeString(keyHex)
 	c, _ := NewAesCipher(ivB, keyB)
@@ -64,7 +64,7 @@ func TestAesCipher_Encrypt(t *testing.T) {
 	assert.Equal(t, encB64, encB64Result)
 }
 
-func TestAesCipher_Decrypt(t *testing.T) {
+func TestAesCipherDecrypt(t *testing.T) {
 	ivB, _ := hex.DecodeString(ivHex)
 	keyB, _ := hex.DecodeString(keyHex)
 	c, _ := NewAesCipher(ivB, keyB)
@@ -80,7 +80,7 @@ func TestAesCipher_Decrypt(t *testing.T) {
 	assert.Equal(t, plain, plainResult)
 }
 
-func TestAesCipher_DecryptToString(t *testing.T) {
+func TestAesCipherDecryptToString(t *testing.T) {
 	ivB, _ := hex.DecodeString(ivHex)
 	keyB, _ := hex.DecodeString(keyHex)
 	c, _ := NewAesCipher(ivB, keyB)
