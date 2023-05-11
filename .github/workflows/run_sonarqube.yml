@@ -1,0 +1,21 @@
+# run SonarQube Check Code
+name: SonarQubeCheckCode
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  build:
+    name: SonarQubeCheckCode
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - uses: sonarsource/sonarqube-scan-action@master
+        env:
+          SONAR_TOKEN: sqp_0f53e39807e8fdc6c8246ebdeb77258c6032f4e7
+          SONAR_HOST_URL: https://codeq.lfin.kr
