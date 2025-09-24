@@ -26,23 +26,29 @@ type KMSEncryptAPI interface {
 
 // EncryptDataByKms encrypts some text using an AWS Key Management Service (AWS KMS) key (KMS key).
 // Inputs:
-//     c is the context of the method call, which includes the AWS Region.
-//     api is the interface that defines the method call.
-//     input defines the input arguments to the service call.
+//
+//	c is the context of the method call, which includes the AWS Region.
+//	api is the interface that defines the method call.
+//	input defines the input arguments to the service call.
+//
 // Output:
-//     If success, an EncryptOutput object containing the result of the service call and nil.
-//     Otherwise, nil and an error from the call to Encrypt.
+//
+//	If success, an EncryptOutput object containing the result of the service call and nil.
+//	Otherwise, nil and an error from the call to Encrypt.
 func EncryptDataByKms(c context.Context, api KMSEncryptAPI, input *kms.EncryptInput) (*kms.EncryptOutput, error) {
 	return api.Encrypt(c, input)
 }
 
 // EncryptData encrypts some text using an AWS Key Management Service (AWS KMS) key (KMS key).
 // Inputs:
-//     key is aws kms key id
-//     s is plaintext
+//
+//	key is aws kms key id
+//	s is plaintext
+//
 // Output:
-//     If success, an EncryptOutput object containing the result of the service call and "".
-//     Otherwise, nil and an error from the call to Encrypt.
+//
+//	If success, an EncryptOutput object containing the result of the service call and "".
+//	Otherwise, nil and an error from the call to Encrypt.
 func EncryptData(keyID, s string) (string, error) {
 	if lstrings.IsEmptyString(keyID) {
 		return "", errors.New("aws kms keyID is nil or empty")

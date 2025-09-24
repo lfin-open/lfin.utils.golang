@@ -23,22 +23,28 @@ type KMSDecryptAPI interface {
 
 // DecryptDataByKms decrypts some text that was encrypted with an AWS Key Management Service (AWS KMS) key (KMS key).
 // Inputs:
-//     c is the context of the method call, which includes the AWS Region.
-//     api is the interface that defines the method call.
-//     input defines the input arguments to the service call.
+//
+//	c is the context of the method call, which includes the AWS Region.
+//	api is the interface that defines the method call.
+//	input defines the input arguments to the service call.
+//
 // Output:
-//     If success, a DecryptOutput object containing the result of the service call and nil.
-//     Otherwise, nil and an error from the call to Decrypt.
+//
+//	If success, a DecryptOutput object containing the result of the service call and nil.
+//	Otherwise, nil and an error from the call to Decrypt.
 func DecryptDataByKms(c context.Context, api KMSDecryptAPI, input *kms.DecryptInput) (*kms.DecryptOutput, error) {
 	return api.Decrypt(c, input)
 }
 
 // DecryptData decrypts some text that was encrypted with an AWS Key Management Service (AWS KMS) key (KMS key).
 // Inputs:
-//     e is encrypted data by AWS KMS
+//
+//	e is encrypted data by AWS KMS
+//
 // Output:
-//     If success, a DecryptOutput object containing the result of the service call and "".
-//     Otherwise, "" and an error from the call to Decrypt.
+//
+//	If success, a DecryptOutput object containing the result of the service call and "".
+//	Otherwise, "" and an error from the call to Decrypt.
 func DecryptData(e string) (string, error) {
 	if strings.IsEmptyString(e) {
 		return "", nil
