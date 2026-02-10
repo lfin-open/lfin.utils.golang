@@ -122,7 +122,7 @@ func MustOpen(fileName, path string) (*os.File, error) {
 	}
 
 	fullPath := fullDir + "/" + fileName
-	f, err := Open(fullPath, os.O_APPEND|os.O_CREATE|os.O_RDWR, 0644)
+	f, err := Open(fullPath, os.O_APPEND|os.O_CREATE|os.O_RDWR, 0o644)
 	if err != nil {
 		return nil, fmt.Errorf("fail to OpenFile :%v", err)
 	}
