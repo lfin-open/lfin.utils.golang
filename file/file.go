@@ -13,7 +13,7 @@ package file
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"mime/multipart"
 	"os"
 	"path"
@@ -36,7 +36,7 @@ func CheckFileNotExist(src string) bool {
 
 // GetSize get the file size
 func GetSize(f multipart.File) (int, error) {
-	content, err := ioutil.ReadAll(f)
+	content, err := io.ReadAll(f)
 
 	return len(content), err
 }
