@@ -72,7 +72,7 @@ func MakeDirIfNotExistWithPerm(src string, perm os.FileMode) error {
 
 // MakeDir creates a directory with all parent directories using secure default permissions (0755)
 func MakeDir(src string) error {
-	return MakeDirWithPerm(src, 0755)
+	return MakeDirWithPerm(src, 0o755)
 }
 
 // MakeDirWithPerm creates a directory with all parent directories using specified permissions
