@@ -48,11 +48,12 @@ func ConvertDDMtoDD(v, dir string) (string, error) {
 	minutes := result - (degrees * 100)
 	result = degrees + minutes/60
 
-	if dir == North || dir == East {
+	switch dir {
+	case North, East:
 		return fmt.Sprintf("%f", result), nil
-	} else if dir == South || dir == West {
+	case South, West:
 		return fmt.Sprintf("-%f", result), nil
-	} else {
+	default:
 		return "0", fmt.Errorf("invalid direction [%s]. requried (N,S,E,W)", dir)
 	}
 }
