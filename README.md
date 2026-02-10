@@ -15,5 +15,5 @@ utilities for GoLang
 - paging: calculate paging 
 - reflection: 
 - strings: check empty, int to string convert ...
-- uuid: generate uuid (36byte)
+- uuid: generate uuid (36byte), uuid v7 (32byte, time-ordered), uid8 (8byte)
 - env: set, get environment variable
