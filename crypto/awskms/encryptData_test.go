@@ -5,8 +5,8 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"io/ioutil"
 	"log"
+	"os"
 	"testing"
 
 	"github.com/aws/aws-sdk-go-v2/service/kms"
@@ -48,7 +48,7 @@ func (KMSEncryptImpl) Encrypt(_ context.Context,
 }
 
 func populateConfiguration() error {
-	content, err := ioutil.ReadFile(configFileName)
+	content, err := os.ReadFile(configFileName)
 	if err != nil {
 		return err
 	}

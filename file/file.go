@@ -54,7 +54,7 @@ func CheckPermission(src string) bool {
 	return os.IsPermission(err)
 }
 
-// MakeDirIfNotExist creates a directory if it does not exist
+// MakeDirIfNotExist creates a directory if it does not exist with default permissions (0755)
 func MakeDirIfNotExist(src string) error {
 	if CheckFileNotExist(src) {
 		return MakeDir(src)
@@ -62,9 +62,22 @@ func MakeDirIfNotExist(src string) error {
 	return nil
 }
 
-// MakeDir creates a directory with all parent directories
+// MakeDirIfNotExistWithPerm creates a directory if it does not exist with specified permissions
+func MakeDirIfNotExistWithPerm(src string, perm os.FileMode) error {
+	if CheckFileNotExist(src) {
+		return MakeDirWithPerm(src, perm)
+	}
+	return nil
+}
+
+// MakeDir creates a directory with all parent directories using secure default permissions (0755)
 func MakeDir(src string) error {
-	err := os.MkdirAll(src, os.ModePerm)
+	return MakeDirWithPerm(src, 0o755)
+}
+
+// MakeDirWithPerm creates a directory with all parent directories using specified permissions
+func MakeDirWithPerm(src string, perm os.FileMode) error {
+	err := os.MkdirAll(src, perm)
 	if err != nil {
 		return err
 	}
