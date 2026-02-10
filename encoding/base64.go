@@ -6,7 +6,7 @@ import (
 	"github.com/lfin-open/lfin.utils.golang/strings"
 )
 
-// Base64EncodingFromString string 을 base64로 인코딩
+// Base64EncodingFromString encodes a string to base64
 func Base64EncodingFromString(s string) string {
 	if strings.IsEmptyString(s) {
 		return ""
@@ -14,7 +14,7 @@ func Base64EncodingFromString(s string) string {
 	return b64.StdEncoding.EncodeToString([]byte(s))
 }
 
-// Base64EncodingFromByte byte 을 base64로 인코딩
+// Base64EncodingFromByte encodes bytes to base64
 func Base64EncodingFromByte(b []byte) string {
 	if len(b) < 1 {
 		return ""
@@ -22,7 +22,7 @@ func Base64EncodingFromByte(b []byte) string {
 	return b64.StdEncoding.EncodeToString(b)
 }
 
-// Base64DecodingToByte base64 디코딩, byte 로 리턴
+// Base64DecodingToByte decodes base64 and returns bytes
 func Base64DecodingToByte(s string) []byte {
 	if strings.IsEmptyString(s) {
 		return []byte("")
@@ -31,7 +31,7 @@ func Base64DecodingToByte(s string) []byte {
 	return sDec
 }
 
-// Base64DecodingToString base64 디코딩, string 으로 리턴
+// Base64DecodingToString decodes base64 and returns a string
 func Base64DecodingToString(s string) string {
 	return string(Base64DecodingToByte(s))
 }

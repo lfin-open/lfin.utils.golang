@@ -13,7 +13,7 @@ package net
 
 import "os"
 
-// GetHostname 시스템의 호스트이름을 리턴
+// GetHostname returns the system's hostname
 func GetHostname() string {
 	// get hostname
 	hostname := ""

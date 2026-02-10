@@ -13,13 +13,13 @@ package file
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"mime/multipart"
 	"os"
 	"path"
 )
 
-// CheckFileExist 파일이 있는지 체크
+// CheckFileExist checks if a file exists at the given path
 func CheckFileExist(filePath string) bool {
 	if _, err := os.Stat(filePath); err == nil {
 		return true
@@ -28,44 +28,41 @@ func CheckFileExist(filePath string) bool {
 	}
 }
 
-// CheckFileNotExist check if the file exists
+// CheckFileNotExist checks if the file does not exist
 func CheckFileNotExist(src string) bool {
 	_, err := os.Stat(src)
 	return os.IsNotExist(err)
 }
 
-// GetSize get the file size
+// GetSize gets the file size from a multipart file
 func GetSize(f multipart.File) (int, error) {
-	content, err := ioutil.ReadAll(f)
+	content, err := io.ReadAll(f)
 
 	return len(content), err
 }
 
-// GetExt get the file ext, include dot(.)
+// GetExt gets the file extension, including the dot (.)
 // abc.txt --> .txt
 func GetExt(fileName string) string {
 	return path.Ext(fileName)
 }
 
-// CheckPermission check if the file has permission
+// CheckPermission checks if the file has permission issues
 func CheckPermission(src string) bool {
 	_, err := os.Stat(src)
 
 	return os.IsPermission(err)
 }
 
-// MkDirIfNotExist create a directory if it does not exist
+// MakeDirIfNotExist creates a directory if it does not exist
 func MakeDirIfNotExist(src string) error {
-	if notExist := CheckFileNotExist(src); notExist {
-		if err := MakeDir(src); err != nil {
-			return err
-		}
+	if CheckFileNotExist(src) {
+		return MakeDir(src)
 	}
-
 	return nil
 }
 
-// MakeDir create a directory
+// MakeDir creates a directory with all parent directories
 func MakeDir(src string) error {
 	err := os.MkdirAll(src, os.ModePerm)
 	if err != nil {
@@ -75,7 +72,7 @@ func MakeDir(src string) error {
 	return nil
 }
 
-// RemoveDirIfExist remove directory if exist
+// RemoveDirIfExist removes a directory if it exists
 func RemoveDirIfExist(src string) error {
 	var e error
 	if CheckFileExist(src) {
@@ -84,7 +81,7 @@ func RemoveDirIfExist(src string) error {
 	return e
 }
 
-// GetCurrentWorkDirectory get current working directory
+// GetWorkDirectory gets the current working directory
 func GetWorkDirectory() string {
 	d, err := os.Getwd()
 	if err != nil {
@@ -93,7 +90,7 @@ func GetWorkDirectory() string {
 	return d
 }
 
-// Open a file according to a specific mode
+// Open opens a file according to a specific mode
 func Open(name string, flag int, perm os.FileMode) (*os.File, error) {
 	f, err := os.OpenFile(name, flag, perm)
 	if err != nil {
@@ -103,7 +100,7 @@ func Open(name string, flag int, perm os.FileMode) (*os.File, error) {
 	return f, nil
 }
 
-// MustOpen maximize trying to open the file
+// MustOpen maximizes trying to open the file
 func MustOpen(fileName, path string) (*os.File, error) {
 	dir, err := os.Getwd()
 	if err != nil {

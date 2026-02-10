@@ -17,7 +17,7 @@ import (
 	"strings"
 )
 
-// IsEmptyString string 이 empty 인지 체크
+// IsEmptyString checks if a string is empty or contains only whitespace
 func IsEmptyString(s string) bool {
 	if strings.TrimSpace(s) == "" {
 		return true
@@ -26,12 +26,12 @@ func IsEmptyString(s string) bool {
 	}
 }
 
-// I64ToS int64 를 String 으로 변환
+// I64ToS converts int64 to string
 func I64ToS(i64 int64) string {
 	return fmt.Sprintf("%d", i64)
 }
 
-// ToSnakeCase convert string to snake_case (공젝은 제거됨)
+// ToSnakeCase converts a string to snake_case (spaces are removed)
 // ex) TestToSnakeCase -> test_to_snake_case
 func ToSnakeCase(str string) string {
 	str = strings.ReplaceAll(str, " ", "")

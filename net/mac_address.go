@@ -6,7 +6,7 @@ import (
 	"github.com/lfin-open/lfin.utils.golang/strings"
 )
 
-// ConvertToMacAddressStyle mac address style 로 변환하기
+// ConvertToMacAddressStyle converts a string to MAC address style
 //
 //	80CA4B4B6F0B --> 80:CA:4B:4B:6F:0B or 80-CA-4B-4B-6F-0B
 func ConvertToMacAddressStyle(s string, v string) string {
