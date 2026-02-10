@@ -25,7 +25,7 @@ const (
 	West  = "W"
 )
 
-// IsValidCoordinates 위경도가 유효한지 체크
+// IsValidCoordinates checks if latitude and longitude are valid
 // 유효범위: -90 <= lat <= 90 , -180 <= lon <= 180
 func IsValidCoordinates(lat, lon float64) bool {
 	ok := true
@@ -35,7 +35,7 @@ func IsValidCoordinates(lat, lon float64) bool {
 	return ok
 }
 
-// ConvertDDMtoDD DDM(Degrees Decimal Minute) 을 DD(Decimal Degrees) 로 변환
+// ConvertDDMtoDD converts DDM (Degrees Decimal Minute) to DD (Decimal Degrees)
 // Longitude: 3733.6734 N -> 37.561223
 // Latitude : 12649.7108 E -> 126.828513
 func ConvertDDMtoDD(v, dir string) (string, error) {
