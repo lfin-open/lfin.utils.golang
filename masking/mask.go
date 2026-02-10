@@ -4,10 +4,11 @@ import "github.com/lfin-open/lfin.utils.golang/strings"
 
 // loopStr 원하는 길이대로 마스킹문자열 생성
 // Parameters:
-//  - m: 마스킹문자
-//  - l: 원하는 길이
+//   - m: 마스킹문자
+//   - l: 원하는 길이
+//
 // Return:
-//  - string: 생성된 masking 문자열
+//   - string: 생성된 masking 문자열
 func loopStr(m string, l int) string {
 	var mask string
 	for i := 1; i <= l; i++ {
@@ -18,12 +19,13 @@ func loopStr(m string, l int) string {
 
 // GenMasking 문자열을 마스킹하여 리턴
 // Parameters:
-//  - src: 원본
-//  - mask: 마스킹할 문자열 (*)
-//  - start: 마스킹 시작할 index
-//  - length: 마스킹 길이
+//   - src: 원본
+//   - mask: 마스킹할 문자열 (*)
+//   - start: 마스킹 시작할 index
+//   - length: 마스킹 길이
+//
 // Return:
-//  - string: 마스킹된 문자열
+//   - string: 마스킹된 문자열
 func GenMasking(src, mask string, start, length int) string {
 	result := ""
 	if strings.IsEmptyString(src) {
